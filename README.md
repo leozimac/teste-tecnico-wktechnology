@@ -33,4 +33,17 @@ Para executar o projeto, basta abrir o terminal no diretório da Solution e exec
 
 ![dockercompose](/img/dockercompose-command-result.png)
 
+O app estará executando na http://localhost:8002
+
+![webapp](/img/webapprunning.png)
+
 ## Possíveis melhorias para próximas versões
+Adicionar log e tracing, para observar o comportamento da aplicação.
+
+Melhorar o design e experiência do usuário.
+
+Adicionar mensageria, caso seja necessário a comunicação entre os microserviços, para a comunicação ser assincrona.
+
+Ao hospedar na nuvem, utilizar algum serviço para substituir o Ocelot API Gateway .
+
+Adicionar um serviço de orquestração dos containers, para garantir resiliência e alta disponibilidade.
