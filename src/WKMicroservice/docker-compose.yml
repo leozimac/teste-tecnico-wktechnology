@@ -1,0 +1,67 @@
+version: '3.4'
+
+volumes:
+  mysql_vol:
+
+networks:
+  backend:
+  frontend:
+
+services:
+  apigateway:
+    image: leocorrea/apigateway:v1
+    ports:
+     - 8001:80
+    networks:
+     - backend
+     - frontend
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+  
+  productsapi:
+    image: leocorrea/products-api:v1
+    build:
+      context: .
+      dockerfile: Products.API/Dockerfile
+    networks:
+     - backend
+    environment:
+     - DB_HOST=mysqldb
+     - DB_NAME=wktech
+     - DB_ROOT_PASSWORD=@prod357
+
+  categoriesapi:
+    image: leocorrea/categories-api:v1
+    build:
+      context: .
+      dockerfile: Categories.API/Dockerfile
+    networks:
+     - backend
+    environment:
+     - DB_HOST=mysqldb
+     - DB_NAME=wktech
+     - DB_ROOT_PASSWORD=@prod357
+
+  webapp:
+    image: leocorrea/products-webapp:v1
+    build:
+      context: .
+      dockerfile: WebApp/Dockerfile
+    ports:
+     - 8002:80
+    networks:
+     - frontend
+
+  mysqldb:
+    image: mysql:8.2.0
+    environment:
+     - MYSQL_DATABASE=wktech
+     - MYSQL_ROOT_PASSWORD=@prod357
+    ports:
+     - 3306:3306
+    networks:
+     - backend
+    volumes:
+     - mysql_vol:/data/db
+     - ../../db/initial_create.sql:/docker-entrypoint-initdb.d/initial_create.sql
