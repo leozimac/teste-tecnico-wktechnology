@@ -25,3 +25,5 @@ A aplicação deverá ser composta por:
 [Docker](https://www.docker.com/) - Para a criação dos containers dos Microserviços.
 
 ## Executando o projeto
+
+## Possíveis melhorias para próximas versões
