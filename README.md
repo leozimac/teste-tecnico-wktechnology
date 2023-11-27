@@ -31,4 +31,6 @@ Para executar o projeto, basta abrir o terminal no diretório da Solution e exec
 
 `docker compose up`
 
+![dockercompose](/img/dockercompose-command-result.png)
+
 ## Possíveis melhorias para próximas versões
