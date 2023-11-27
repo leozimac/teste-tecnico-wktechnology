@@ -1,6 +1,8 @@
 # teste-tecnico-wktechnology
 Esse projeto tem a finalidade de testar o meu conhecimento técnico na criação de uma aplicação web que contenha os CRUDs de Produtos e Categorias, conforme os requisitos.
 
+![Arquitetura](/img/arquitetura.png)
+
 ## Requisitos
 A aplicação deverá ser composta por:
 - Banco de dados:
@@ -25,5 +27,8 @@ A aplicação deverá ser composta por:
 [Docker](https://www.docker.com/) - Para a criação dos containers dos Microserviços.
 
 ## Executando o projeto
+Para executar o projeto, basta abrir o terminal no diretório da Solution e executar o comando:
+
+`docker compose up`
 
 ## Possíveis melhorias para próximas versões
