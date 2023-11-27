@@ -20,7 +20,7 @@ namespace Categories.API.Application.Queries.GetAll
             {
                 var categories = await _repository.GetAllAsync();
 
-                if(categories is null)
+                if(categories is null || categories.Count == 0)
                 {
                     response.StatusCode = System.Net.HttpStatusCode.OK;
                     response.Messages.Add("No categories found.");

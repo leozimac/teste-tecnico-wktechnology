@@ -4,6 +4,6 @@ namespace Products.API.Application.Queries.GetById
 {
     public class GetProductByIdResponse : ResponseBase
     {
-        public ProductDto Product { get; set; }
+        public ProductDetailsDto Product { get; set; }
     }
 }

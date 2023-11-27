@@ -7,11 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD");
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddVersioning();
 builder.Services.AddSwagger(Assembly.GetExecutingAssembly().GetName().Name);
-builder.Services.AddMySql(builder.Configuration);
+builder.Services.AddMySql(builder.Configuration, dbHost, dbName, dbPassword);
 builder.Services.AddRepositories();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AddProductCommand).Assembly));
 builder.Services.AddCors();

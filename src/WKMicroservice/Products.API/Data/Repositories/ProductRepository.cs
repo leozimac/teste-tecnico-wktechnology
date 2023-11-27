@@ -48,7 +48,7 @@ namespace Products.API.Data.Repositories
             return await _context.Products.FindAsync(id);
         }
 
-        public async Task<ProductDto?> GetDetailsAsync(int id)
+        public async Task<ProductDetailsDto?> GetDetailsAsync(int id)
         {
             var product = await _context.Products.
                 Include(p => p.Category)
@@ -57,12 +57,13 @@ namespace Products.API.Data.Repositories
             if (product is null)
                 return null;
 
-            return new ProductDto
+            return new ProductDetailsDto
             {
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
+                IdCategory = product.IdCategory,
                 Category = product.Category.Name
             };
         }
